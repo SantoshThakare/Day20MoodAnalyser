@@ -6,8 +6,8 @@ namespace test
     [TestClass]
     public class UnitTest1
     {
-        [TestMethod]
 
+        [TestMethod]
         [TestCategory("SAD Message")]
         public void GivenSadMoodShouldReturnSAD()
         {
@@ -20,6 +20,20 @@ namespace test
 
             Assert.AreEqual(expected.ToLower(), moodAnalyse.ToLower());
         }
-       
+        [TestMethod]
+        [TestCategory("HAPPY Message")]
+
+        public void GivenHappyMoodShouldReturnHAPPY()
+        {
+            string expected = "happy";
+            string message = "I am in Happy Mood";
+            moodAnalyse mood = new moodAnalyse(message);
+
+
+            string moodAnalyse = mood.AnalyseMood();
+
+            Assert.AreEqual(expected.ToLower(), moodAnalyse.ToLower());
+        }
+
     }
 }

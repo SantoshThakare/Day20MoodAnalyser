@@ -8,7 +8,7 @@ namespace MoodAnalyse
 {
     public class moodAnalyse
     {
-        string message;
+      private  string message;
         public moodAnalyse(string message)
         {
             this.message = message;
@@ -16,7 +16,7 @@ namespace MoodAnalyse
         public string AnalyseMood()
         {
             if (message.ToLower().Contains("happy"))
-           {
+            {
                 return "happy";
                 
             }
