@@ -41,7 +41,7 @@ namespace test
             string msg = null;
             string expected = "happy";
 
-            moodAnalyse mood = new moodAnalyse(msg);
+            moodAnalyse mood = new moodAnalyse("I am in Happy Mood");
             string moodAnalyse = mood.AnalyseMood();
 
             Assert.AreEqual(expected.ToLower(), moodAnalyse.ToLower());

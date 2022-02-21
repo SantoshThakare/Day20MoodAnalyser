@@ -23,7 +23,6 @@ namespace MoodAnalyse
             else
             {
                 return "sad";
-
             }
         }
     }
