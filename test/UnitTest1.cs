@@ -15,7 +15,6 @@ namespace test
             string message = "I am in Sad Mood";
             moodAnalyse mood = new moodAnalyse(message);
 
-
             string moodAnalyse = mood.AnalyseMood();
 
             Assert.AreEqual(expected.ToLower(), moodAnalyse.ToLower());
@@ -28,12 +27,25 @@ namespace test
             string expected = "happy";
             string message = "I am in Happy Mood";
             moodAnalyse mood = new moodAnalyse(message);
-
-
             string moodAnalyse = mood.AnalyseMood();
 
             Assert.AreEqual(expected.ToLower(), moodAnalyse.ToLower());
-        }
 
+        }
+        [TestMethod]
+
+        [TestCategory("Null Exception")]
+        public void GivenNullMessageException()
+        {
+
+            string msg = null;
+            string expected = "happy";
+
+            moodAnalyse mood = new moodAnalyse(msg);
+            string moodAnalyse = mood.AnalyseMood();
+
+            Assert.AreEqual(expected.ToLower(), moodAnalyse.ToLower());
+
+        }
     }
 }
