@@ -47,5 +47,36 @@ namespace test
             Assert.AreEqual(expected.ToLower(), moodAnalyse.ToLower());
 
         }
+        [TestMethod]
+        [TestCategory("Custom Exception")]
+        
+        public void TestCustomNullException()
+        {
+            
+            string msg = null;
+            string expected = "message should not be null";
+            moodAnalyse mood = new moodAnalyse(msg);
+
+
+            string moodAnalyse = mood.AnalyseMood();
+           
+                Assert.AreEqual(expected.ToLower(), moodAnalyse.ToLower());
+
+        }
+        [TestMethod]
+        [TestCategory("Custom Exception")]       
+        public void TestCustomEmptyException()
+        {
+            
+            string msg = "";
+            string expected = "message should not be empty";
+            moodAnalyse mood = new moodAnalyse(msg);
+            
+            string moodAnalyse = mood.AnalyseMood();
+            
+               
+                Assert.AreEqual(expected.ToLower(), moodAnalyse.ToLower());
+            
+        }
     }
 }

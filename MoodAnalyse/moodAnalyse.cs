@@ -14,16 +14,26 @@ namespace MoodAnalyse
             this.message = message;
         }
         public string AnalyseMood()
-        {
-            if (message.ToLower().Contains("happy"))
+        { 
+            try
             {
-                return "happy";
-                
+
+                if (this.message == (null))
+                    throw new MoodException(MoodException.ExceptionTypes.NULL_MOOD_EXCEPTION, "Message should not be null");
+                else if (this.message.Equals(string.Empty))
+                    throw new MoodException(MoodException.ExceptionTypes.EMPTY_MOOD_EXCEPTION, "Message should not be empty");
+                else if (message.ToLower().Contains("sad"))
+                    return "sad";
+                else
+                    return "happy";
+
             }
-            else
+            catch (MoodException e)
+
             {
-                return "sad";
+                return e.Message;
             }
+
         }
     }
 }
