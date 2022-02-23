@@ -9,6 +9,11 @@ namespace MoodAnalyse
     public class moodAnalyse
     {
       private  string message;
+
+        public moodAnalyse()
+        {
+        }
+
         public moodAnalyse(string message)
         {
             this.message = message;
@@ -29,6 +34,11 @@ namespace MoodAnalyse
 
             }
             catch (MoodException e)
+
+            {
+                return e.Message;
+            }
+            catch (NullReferenceException e)
 
             {
                 return e.Message;
