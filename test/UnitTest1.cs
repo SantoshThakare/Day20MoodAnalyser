@@ -126,5 +126,71 @@ namespace test
                 Assert.AreEqual(expected, actual.Message);
             }
         }
+        [TestCategory("Reflection")]
+        [TestMethod]
+        [DataRow("I am in happy mood")]
+        [DataRow("I am in sad mood")]
+        [DataRow("I am in any mood")]
+        public void GivenMessageReturenParameterizedConstuctor(string message)
+        {
+            moodAnalyse expected = new moodAnalyse(message);
+            object obj = null;
+            try
+            {
+                MoodAnalyserFactory factory = new MoodAnalyserFactory();
+                obj = factory.CreateMoodAnalyserParameterizedObject("moodAnalyse", "moodAnalyse", message);
+            }
+            catch (MoodException actual)
+            {
+
+                Assert.AreEqual(expected, actual.Message);
+                obj.Equals(expected);
+            }
+
+        }
+        
+        [TestCategory("Reflection")]
+        [TestMethod]
+        [DataRow("MoodAnalyse.Queues", "I am in Happy mood", "No Such Class")]
+        [DataRow("MoodAnalyse.Linkedlist", "I am in Sad mood", "No Such Class")]
+        [DataRow("MoodAnalyse.Stack", "I am in any mood", "No Such Class")]
+        public void GivenMessageReturnParameterizedClassNotFound(string className, string message, string expextedError)
+        {
+            moodAnalyse expected = new moodAnalyse(message);
+            object obj = null;
+            try
+            {
+                MoodAnalyserFactory factory = new MoodAnalyserFactory();
+                obj = factory.CreateMoodAnalyserParameterizedObject(className, "MoodAnalyse", message);
+
+            }
+            catch (MoodException actual)
+            {
+                Assert.AreEqual(expextedError, actual.Message);
+            }
+        }
+
+    
+        [TestCategory("Reflection")]
+        [TestMethod]
+        [DataRow("Customer", "I am in Happy mood", "No Such Constructor")]
+        [DataRow("Linkedlist", "I am in Sad mood", "No Such Constructor")]
+        [DataRow("Stack", "I am in any mood", "No Such Constructor")]
+        public void GivenMessageReturnParameterizedConstructorNotFound(string constructor, string message, string expextedError)
+        {
+            moodAnalyse expected = new moodAnalyse(message);
+            object obj = null;
+            try
+            {
+                MoodAnalyserFactory factory = new MoodAnalyserFactory();
+                obj = factory.CreateMoodAnalyserParameterizedObject("moodAnalyse", constructor, message);
+
+            }
+            catch (MoodException Actual)
+            {
+                Assert.AreEqual(expextedError , Actual.Message);
+                
+            }
+        }
     }
 }
